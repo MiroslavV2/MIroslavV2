@@ -106,24 +106,29 @@ def time(x, y):
 
 print("Введите время: Сначало часы, потом через пробел введите минуты ЦИФРАМИ!!!")
 
-a_str, b_str = input().split()
-c = 0
-
-if (a_str.startswith('-') and int(a_str) == 0) or (b_str.startswith('-') and int(b_str) == 0) :
-    print('Не пиши отрицательный ноль @$&%%')
-    c += 1
+a_list = input().split()
+if len(a_list) != 2:
+    print("Вводи 2 числа!")
 else:
-    if str(a_str).isdigit() and str(b_str).isdigit():
-        a, b = int(a_str), int(b_str)
-        if (not (0 <= a < 24) or not (0 <= b < 60)) and c == 0:
-            print('Будь внимательней, такого времени нет.')
-            c += 1
-        elif a == 0 and b == 0 and c == 0:
-            print('Полночь')
-        elif a == 12 and b == 0 and c == 0:
-            print('Полдень')
-        elif c == 0:
-            print(time(a, b))
+    b_str = a_list[1]
+    a_str = a_list[0]
+    c = 0
+
+    if (a_str.startswith('-') and int(a_str) == 0) or (b_str.startswith('-') and int(b_str) == 0) :
+        print('Не пиши отрицательный ноль @$&%%')
+        c += 1
     else:
-        c = 10
-        print("Пиши цифрами @@#$%!!!")    
+        if str(a_str).isdigit() and str(b_str).isdigit():
+            a, b = int(a_str), int(b_str)
+            if (not (0 <= a < 24) or not (0 <= b < 60)) and c == 0:
+                print('Будь внимательней, такого времени нет.')
+                c += 1
+            elif a == 0 and b == 0 and c == 0:
+                print('Полночь')
+            elif a == 12 and b == 0 and c == 0:
+                print('Полдень')
+            elif c == 0:
+                print(time(a, b))
+        else:
+            c = 10
+            print("Пиши цифрами @@#$%!!!")    
